@@ -6,6 +6,7 @@ import {
   Line,
   XAxis,
   YAxis,
+  CartesianGrid,
 } from "recharts"
 
 const data = [
@@ -26,12 +27,14 @@ export function RevenueChart() {
           <CardDescription>Receita diária no periodo</CardDescription>
         </div>
       </CardHeader>
+
       <CardContent>
         <ResponsiveContainer width="100%" height={240}>
           <LineChart data={data} style={{ fontSize: 12 }}>
             <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16}/>
             <YAxis stroke="#888" axisLine={false} tickLine={false} tickFormatter={(value: number)=> value.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}/>
             <Line type="linear" dataKey="revenue" strokeWidth={2}  stroke={colors.violet[400]}/>
+            <CartesianGrid vertical={false} className="stroke-muted" />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>
